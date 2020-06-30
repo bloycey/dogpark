@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
+import { useHistory } from "react-router-dom";
+import { ALL_DOGS } from "./DogList";
 
 const ADD_DOG = gql`
     mutation createDogMutation($name: String!, $breed: String!) {
@@ -15,12 +17,20 @@ const ADD_DOG = gql`
 const AddDog = () => {
     const [name, setName] = useState("");
     const [breed, setBreed] = useState("");
-    const [addDog] = useMutation(ADD_DOG);
+    const [addDog] = useMutation(ADD_DOG, {
+        update(cache, { data: { createDog } }) {
+            const { dogs } = cache.readQuery({ query: ALL_DOGS });
+            cache.writeQuery({
+                query: ALL_DOGS,
+                data: { dogs: [...dogs, createDog] }
+            });
+        }
+    });
+    const history = useHistory();
 
     const addNewDog = () =>
         addDog({ variables: { name, breed } }).then((result) => {
-            // This is a hack. TODO: Fix this up.
-            window.location = "/";
+            history.push("/");
         });
 
     return (
