@@ -5,7 +5,7 @@ import { ApolloServer } from "apollo-server-express";
 
 import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
-import { db } from "./credentials";
+const db = require("./credentials");
 
 const startServer = async () => {
     const app = express();

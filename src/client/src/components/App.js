@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AddDog from "./AddDog";
 import DogList from "./DogList";
 
-function App() {
+const App = () => {
     return (
         <Router>
             <Switch>
@@ -17,6 +17,6 @@ function App() {
             </Switch>
         </Router>
     );
-}
+};
 
 export default App;

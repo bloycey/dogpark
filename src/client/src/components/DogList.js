@@ -1,13 +1,16 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { useQuery } from "react-apollo";
 import gql from "graphql-tag";
 import Dog from "./Dog";
 
-const ALL_DOGS = gql`
+import { Link } from "react-router-dom";
+
+export const ALL_DOGS = gql`
     {
         dogs {
             id
             name
+            breed
         }
     }
 `;
@@ -26,9 +29,6 @@ const subscribeToNewDogs = (subscribeToMore) => {
     subscribeToMore({
         document: NEW_DOGS_SUBSCRIPTION,
         updateQuery: (prev, { subscriptionData }) => {
-            console.log("prev", prev);
-            console.log("subscription data", subscriptionData);
-
             if (!subscriptionData.data) {
                 return prev;
             }
@@ -46,29 +46,26 @@ const subscribeToNewDogs = (subscribeToMore) => {
 };
 
 const DogList = () => {
+    const { loading, error, data, subscribeToMore } = useQuery(ALL_DOGS);
+
+    if (loading) {
+        return "Loading";
+    }
+    if (error) {
+        console.log("error", error);
+        return "Error";
+    }
+
+    subscribeToNewDogs(subscribeToMore);
+    const allDogs = data.dogs;
+
     return (
-        <Query query={ALL_DOGS}>
-            {({ loading, error, data, subscribeToMore }) => {
-                if (loading) {
-                    return "Loading";
-                }
-                if (error) {
-                    console.log("error", error);
-                    return "Error";
-                }
-
-                subscribeToNewDogs(subscribeToMore);
-                const allDogs = data.dogs;
-
-                return (
-                    <div>
-                        {allDogs.map((dog) => (
-                            <Dog id={dog.id} name={dog.name} key={dog.id} />
-                        ))}
-                    </div>
-                );
-            }}
-        </Query>
+        <div>
+            {allDogs.map((dog) => (
+                <Dog id={dog.id} name={dog.name} key={dog.id} />
+            ))}
+            <Link to="/add-dog">Doggo Check In</Link>
+        </div>
     );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import { useMutation } from "react-apollo";
 
 const ADD_DOG = gql`
     mutation createDogMutation($name: String!, $breed: String!) {
@@ -15,6 +15,13 @@ const ADD_DOG = gql`
 const AddDog = () => {
     const [name, setName] = useState("");
     const [breed, setBreed] = useState("");
+    const [addDog] = useMutation(ADD_DOG);
+
+    const addNewDog = () =>
+        addDog({ variables: { name, breed } }).then((result) => {
+            // This is a hack. TODO: Fix this up.
+            window.location = "/";
+        });
 
     return (
         <div>
@@ -31,11 +38,7 @@ const AddDog = () => {
                 <option value="Great Dane">Great Dane</option>
                 <option value="Pug">Pug</option>
             </select>
-            <Mutation mutation={ADD_DOG} variables={{ name, breed }}>
-                {(dogMutation) => (
-                    <button onClick={dogMutation}>Add Dog</button>
-                )}
-            </Mutation>
+            <button onClick={addNewDog}>Add Dog</button>
         </div>
     );
 };
