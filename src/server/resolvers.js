@@ -3,6 +3,7 @@ import { PubSub } from "apollo-server-express";
 import { uuid } from "uuidv4";
 
 const pubsub = new PubSub();
+pubsub.ee.setMaxListeners(30);
 
 const resolvers = {
     Subscription: {
