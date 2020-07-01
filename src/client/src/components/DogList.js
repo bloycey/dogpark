@@ -25,6 +25,14 @@ const NEW_DOGS_SUBSCRIPTION = gql`
     }
 `;
 
+const REMOVED_DOGS_SUBSCRIPTION = gql`
+    subscription {
+        dogRemoved {
+            id
+        }
+    }
+`;
+
 const subscribeToNewDogs = (subscribeToMore) => {
     subscribeToMore({
         document: NEW_DOGS_SUBSCRIPTION,
@@ -34,13 +42,34 @@ const subscribeToNewDogs = (subscribeToMore) => {
             }
 
             const newDog = subscriptionData.data.dogAdded;
-            const exists = prev.dogs.find(({ id }) => id === newDog.id);
 
-            if (exists) {
+            const newDogExists = prev.dogs.find(({ id }) => id === newDog.id);
+
+            if (newDogExists) {
                 return prev;
             }
 
             return { dogs: [...prev.dogs, newDog] };
+        }
+    });
+};
+
+const subscribeToRemovedDogs = (subscribeToMore) => {
+    subscribeToMore({
+        document: REMOVED_DOGS_SUBSCRIPTION,
+        updateQuery: (prev, { subscriptionData }) => {
+            if (!subscriptionData.data) {
+                return prev;
+            }
+
+            const removedDog = subscriptionData.data.dogRemoved.id;
+            const newDogExists = prev.dogs.find(({ id }) => id === removedDog);
+
+            if (!newDogExists) {
+                return prev;
+            }
+
+            return { dogs: prev.dogs.filter((dog) => dog.id !== removedDog) };
         }
     });
 };
@@ -57,12 +86,19 @@ const DogList = () => {
     }
 
     subscribeToNewDogs(subscribeToMore);
+    subscribeToRemovedDogs(subscribeToMore);
+
     const allDogs = data.dogs;
 
     return (
         <div>
             {allDogs.map((dog) => (
-                <Dog id={dog.id} name={dog.name} key={dog.id} />
+                <Dog
+                    id={dog.id}
+                    name={dog.name}
+                    breed={dog.breed}
+                    key={dog.id}
+                />
             ))}
             <Link to="/add-dog">Doggo Check In</Link>
         </div>

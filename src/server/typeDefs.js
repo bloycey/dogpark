@@ -6,6 +6,10 @@ const typeDefs = gql`
         dogs: [Dog!]!
     }
 
+    type id {
+        id: String!
+    }
+
     type Dog {
         id: ID!
         name: String!
@@ -14,11 +18,12 @@ const typeDefs = gql`
 
     type Mutation {
         createDog(name: String!, breed: String!): Dog!
-        removeDog(id: String!): Boolean!
+        removeDog(id: String!): String!
     }
 
     type Subscription {
         dogAdded: Dog!
+        dogRemoved: id!
     }
 `;
 

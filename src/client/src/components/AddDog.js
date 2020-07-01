@@ -16,7 +16,7 @@ const ADD_DOG = gql`
 
 const AddDog = () => {
     const [name, setName] = useState("");
-    const [breed, setBreed] = useState("");
+    const [breed, setBreed] = useState("dog");
     const [addDog] = useMutation(ADD_DOG, {
         update(cache, { data: { createDog } }) {
             const { dogs } = cache.readQuery({ query: ALL_DOGS });
@@ -28,10 +28,12 @@ const AddDog = () => {
     });
     const history = useHistory();
 
-    const addNewDog = () =>
-        addDog({ variables: { name, breed } }).then((result) => {
-            history.push("/");
-        });
+    const addNewDog = async () =>
+        addDog({ variables: { name, breed } })
+            .then(() => {
+                history.push("/");
+            })
+            .catch((err) => console.log(err));
 
     return (
         <div>
@@ -40,8 +42,11 @@ const AddDog = () => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Dog Name"
             />
-            <select onChange={(e) => setBreed(e.target.value)}>
-                <option selected disabled value="">
+            <select
+                onChange={(e) => setBreed(e.target.value)}
+                defaultValue="dog"
+            >
+                <option disabled value="dog">
                     Select a breed
                 </option>
                 <option value="Brittany Spaniel">Brittany Spaniel</option>

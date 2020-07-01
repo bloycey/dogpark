@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AddDog from "./AddDog";
 import DogList from "./DogList";
+import DogSummary from "./DogSummary";
 
 const App = () => {
     return (
@@ -10,6 +11,9 @@ const App = () => {
             <Switch>
                 <Route path="/add-dog">
                     <AddDog />
+                </Route>
+                <Route path="/dog/:breed/:name/:id">
+                    <DogSummary />
                 </Route>
                 <Route path="/">
                     <DogList />
