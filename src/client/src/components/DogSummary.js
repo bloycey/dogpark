@@ -32,9 +32,8 @@ const DogSummary = () => {
     return (
         <div>
             <h2>Dog summary here</h2>
-            <div>{breed}</div>
-            <div>{name}</div>
-            <div>{id}</div>
+            <div>{decodeURIComponent(breed)}</div>
+            <div>{decodeURIComponent(name)}</div>
             <button onClick={removeDogAndReset}>Leave the dogpark</button>
             <Link to="/">Go home</Link>
         </div>
