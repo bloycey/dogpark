@@ -17864,6 +17864,11 @@ video {
   transition-delay: 1000ms;
 }
 
+html,
+body {
+  font-family: "Catamaran", sans-serif;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
