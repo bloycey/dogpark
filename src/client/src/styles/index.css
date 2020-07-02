@@ -4,5 +4,9 @@
 
 html,
 body {
-	font-family: "Catamaran", sans-serif;
+    font-family: "Catamaran", sans-serif;
+}
+
+.test {
+    font-size: 50px;
 }
