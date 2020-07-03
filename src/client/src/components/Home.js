@@ -1,20 +1,23 @@
 import React from "react";
 import { useQuery } from "react-apollo";
+import { useParams } from "react-router-dom";
 import gql from "graphql-tag";
 import DogList from "./DogList";
 import Header from "./Header";
 
 import { Link } from "react-router-dom";
 
-export const ALL_DOGS = gql`
-	{
-		dogs {
-			id
-			name
-			breed
+export const createDogsQuery = (dogPark) => {
+	return gql`
+		{
+			dogs(dogPark: "${dogPark}"){
+				id
+				name
+				breed
+			}
 		}
-	}
-`;
+	`;
+};
 
 const NEW_DOGS_SUBSCRIPTION = gql`
 	subscription {
@@ -76,6 +79,8 @@ const subscribeToRemovedDogs = (subscribeToMore) => {
 };
 
 const Home = () => {
+	const { dogPark } = useParams();
+	const ALL_DOGS = createDogsQuery(dogPark);
 	const { loading, error, data, subscribeToMore } = useQuery(ALL_DOGS);
 
 	if (loading) {
@@ -94,12 +99,12 @@ const Home = () => {
 
 	return (
 		<div className="bg-gray-200 h-screen">
-			<Header numDogs={numDogs} />
-			<DogList dogs={allDogs} />
+			<Header numDogs={numDogs} dogPark={dogPark} />
+			<DogList dogs={allDogs} dogPark={dogPark} />
 			<div className="container px-4 mx-auto pb-4">
 				<Link
-					to={`/add-dog/${numDogs}`}
-					className="bg-primary block flex h-10 items-center justify-center rounded-md primary-btn"
+					to={`/add-dog/${dogPark}/${numDogs}`}
+					className="bg-primary flex h-10 items-center justify-center rounded-md primary-btn"
 				>
 					<h2 className="uppercase text-dark font-black">
 						Doggo Check In

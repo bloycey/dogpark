@@ -1,7 +1,7 @@
 import React from "react";
 import BORK from "../assets/bork2.png";
 
-const Header = ({ numDogs }) => {
+const Header = ({ numDogs, dogPark }) => {
 	const numberOfDogs = parseInt(numDogs);
 	return (
 		<div className="bg-dark">
@@ -13,7 +13,9 @@ const Header = ({ numDogs }) => {
 				<p className="font-black uppercase text-6xl leading-none">
 					{numberOfDogs} dog{numberOfDogs === 1 ? "" : "s"}
 				</p>
-				<p className="text-right leading-none">at oxley dog park.</p>
+				<p className="text-right leading-none">
+					at {dogPark} dog park.
+				</p>
 				<img src={BORK} alt="BORK sound" className="bork" />
 			</div>
 		</div>

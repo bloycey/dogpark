@@ -1,30 +1,31 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
-    type Query {
-        hello: String!
-        dogs: [Dog!]!
-    }
+	type Query {
+		hello: String!
+		dogs(dogPark: String!): [Dog!]!
+	}
 
-    type id {
-        id: String!
-    }
+	type id {
+		id: String!
+	}
 
-    type Dog {
-        id: ID!
-        name: String!
-        breed: String!
-    }
+	type Dog {
+		id: ID!
+		name: String!
+		breed: String!
+		dogPark: String!
+	}
 
-    type Mutation {
-        createDog(name: String!, breed: String!): Dog!
-        removeDog(id: String!): String!
-    }
+	type Mutation {
+		createDog(name: String!, breed: String!, dogPark: String!): Dog!
+		removeDog(id: String!): String!
+	}
 
-    type Subscription {
-        dogAdded: Dog!
-        dogRemoved: id!
-    }
+	type Subscription {
+		dogAdded: Dog!
+		dogRemoved: id!
+	}
 `;
 
 export default typeDefs;

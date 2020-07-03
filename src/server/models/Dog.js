@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
-const Dog = mongoose.model("Dog", { name: String, id: String, breed: String });
+const Schema = mongoose.Schema;
 
-export default Dog;
+const dogSchema = new Schema({
+	name: String,
+	id: String,
+	breed: String,
+	dogPark: String,
+});
+
+export const Dog = mongoose.model("Dog", dogSchema);
+
+// export const dogParkSchema = new Schema([dogSchema]);
+
+// export const DogPark = mongoose.model("DogPark", dogParkSchema);

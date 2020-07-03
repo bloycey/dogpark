@@ -3,20 +3,27 @@ import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
 import { useHistory, useParams } from "react-router-dom";
 import Header from "./Header";
-import { ALL_DOGS } from "./Home";
+import { createDogsQuery } from "./Home";
 import { dogBreeds } from "../data/dogBreeds";
 
 const ADD_DOG = gql`
-	mutation createDogMutation($name: String!, $breed: String!) {
-		createDog(name: $name, breed: $breed) {
+	mutation createDogMutation(
+		$name: String!
+		$breed: String!
+		$dogPark: String!
+	) {
+		createDog(name: $name, breed: $breed, dogPark: $dogPark) {
 			id
 			name
 			breed
+			dogPark
 		}
 	}
 `;
 
 const AddDog = () => {
+	const { numDogs, dogPark } = useParams();
+	const ALL_DOGS = createDogsQuery(dogPark);
 	const [name, setName] = useState("Dog");
 	const [breed, setBreed] = useState("dog");
 	const [addDog] = useMutation(ADD_DOG, {
@@ -30,12 +37,11 @@ const AddDog = () => {
 	});
 
 	const history = useHistory();
-	const { numDogs } = useParams();
 
 	const addNewDog = async () =>
-		addDog({ variables: { name, breed } })
+		addDog({ variables: { name, breed, dogPark } })
 			.then(() => {
-				history.push("/");
+				history.push(`/${dogPark}`);
 			})
 			.catch((err) => console.log(err));
 

@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
 
 import BLOB from "../assets/blob.svg";
-import { ALL_DOGS } from "./Home";
+import { createDogsQuery } from "./Home";
 import DOGHOUSE from "../assets/doghouse.png";
 
 const REMOVE_DOG = gql`
@@ -12,8 +12,9 @@ const REMOVE_DOG = gql`
 	}
 `;
 
-const Dog = ({ id, name, breed }) => {
+const Dog = ({ id, name, breed, dogPark }) => {
 	const [showConfirmation, setShowConfirmation] = useState(false);
+	const ALL_DOGS = createDogsQuery(dogPark);
 	const [removeDog] = useMutation(REMOVE_DOG, {
 		update(cache, { data: { removeDog } }) {
 			const { dogs } = cache.readQuery({ query: ALL_DOGS });

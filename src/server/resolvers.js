@@ -1,4 +1,4 @@
-import Dog from "./models/Dog";
+import { Dog } from "./models/Dog";
 import { PubSub } from "apollo-server-express";
 import { uuid } from "uuidv4";
 
@@ -15,15 +15,15 @@ const resolvers = {
 		},
 	},
 	Query: {
-		dogs: () => Dog.find(),
+		dogs: (_, { dogPark }) => Dog.find({ dogPark: dogPark }),
 	},
 	Mutation: {
-		createDog: async (_, { name, breed }) => {
+		createDog: async (_, { name, breed, dogPark }) => {
 			const identifier = uuid();
-			const doggo = new Dog({ name, id: identifier, breed });
+			const doggo = new Dog({ name, id: identifier, breed, dogPark });
 			await doggo.save().then(() => console.log("woof"));
 			pubsub.publish("DogAdded", {
-				dogAdded: { name, id: identifier, breed },
+				dogAdded: { name, id: identifier, breed, dogPark },
 			});
 			return doggo;
 		},

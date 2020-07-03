@@ -3,7 +3,7 @@ import Dog from "./Dog";
 import DOGGO from "../assets/doggo.png";
 import CURVE from "../assets/curve.svg";
 
-const DogList = ({ dogs }) => {
+const DogList = ({ dogs, dogPark }) => {
 	return (
 		<div className="relative">
 			<img src={CURVE} alt="smooth curve" className="absolute" />
@@ -18,6 +18,7 @@ const DogList = ({ dogs }) => {
 						name={dog.name}
 						breed={dog.breed}
 						key={dog.id}
+						dogPark={dogPark}
 					/>
 				))}
 			</div>
