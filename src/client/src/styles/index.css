@@ -4,9 +4,42 @@
 
 html,
 body {
-    font-family: "Catamaran", sans-serif;
+	font-family: "Catamaran", sans-serif;
+	font-size: 26px;
 }
 
-.test {
-    font-size: 50px;
+.bork {
+	position: absolute;
+	bottom: 8px;
+	left: 24px;
+	width: 80px;
+}
+
+.fancy-underline::after {
+	content: "";
+	display: block;
+	height: 8px;
+	background-color: #fece2f;
+	width: 105%;
+	margin-top: -18px;
+	position: relative;
+	z-index: -1;
+}
+
+.doggo {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	height: 100px;
+}
+
+.blob-btn {
+	width: 90px;
+}
+
+.blob-btn-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }

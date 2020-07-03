@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
 import { useHistory } from "react-router-dom";
-import { ALL_DOGS } from "./DogList";
+import { ALL_DOGS } from "./Home";
 import { dogBreeds } from "../data/dogBreeds";
 
 const ADD_DOG = gql`
