@@ -80,10 +80,11 @@ const subscribeToRemovedDogs = (subscribeToMore) => {
 
 const Home = () => {
 	const { dogPark } = useParams();
-	const ALL_DOGS = createDogsQuery(dogPark);
+	const formattedDogPark = decodeURIComponent(dogPark);
+	const ALL_DOGS = createDogsQuery(formattedDogPark);
 	const { loading, error, data, subscribeToMore } = useQuery(ALL_DOGS);
 
-	if (loading) {
+	if (!data && loading) {
 		return "Loading";
 	}
 	if (error) {
@@ -99,9 +100,9 @@ const Home = () => {
 
 	return (
 		<div className="bg-gray-200 h-screen">
-			<Header numDogs={numDogs} dogPark={dogPark} />
-			<DogList dogs={allDogs} dogPark={dogPark} />
-			<div className="container px-4 mx-auto pb-4">
+			<Header numDogs={numDogs} dogPark={formattedDogPark} />
+			{!!numDogs && <DogList dogs={allDogs} dogPark={formattedDogPark} />}
+			<div className="container px-4 mx-auto pb-4 mt-4">
 				<Link
 					to={`/add-dog/${dogPark}/${numDogs}`}
 					className="bg-primary flex h-10 items-center justify-center rounded-md primary-btn"

@@ -23,7 +23,8 @@ const ADD_DOG = gql`
 
 const AddDog = () => {
 	const { numDogs, dogPark } = useParams();
-	const ALL_DOGS = createDogsQuery(dogPark);
+	const formattedDogPark = decodeURIComponent(dogPark);
+	const ALL_DOGS = createDogsQuery(formattedDogPark);
 	const [name, setName] = useState("Dog");
 	const [breed, setBreed] = useState("dog");
 	const [addDog] = useMutation(ADD_DOG, {
@@ -39,7 +40,7 @@ const AddDog = () => {
 	const history = useHistory();
 
 	const addNewDog = async () =>
-		addDog({ variables: { name, breed, dogPark } })
+		addDog({ variables: { name, breed, dogPark: formattedDogPark } })
 			.then(() => {
 				history.push(`/${dogPark}`);
 			})
@@ -47,7 +48,7 @@ const AddDog = () => {
 
 	return (
 		<>
-			<Header numDogs={numDogs} dogPark={dogPark} />
+			<Header numDogs={numDogs} dogPark={formattedDogPark} />
 			<div>
 				<input
 					type="text"

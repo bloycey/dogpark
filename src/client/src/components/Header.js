@@ -13,9 +13,7 @@ const Header = ({ numDogs, dogPark }) => {
 				<p className="font-black uppercase text-6xl leading-none">
 					{numberOfDogs} dog{numberOfDogs === 1 ? "" : "s"}
 				</p>
-				<p className="text-right leading-none">
-					at {dogPark} dog park.
-				</p>
+				<p className="text-right leading-none ">at {dogPark}</p>
 				<img src={BORK} alt="BORK sound" className="bork" />
 			</div>
 		</div>
