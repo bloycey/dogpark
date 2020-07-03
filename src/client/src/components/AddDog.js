@@ -47,7 +47,7 @@ const AddDog = () => {
 
 	return (
 		<>
-			<Header numDogs={numDogs} />
+			<Header numDogs={numDogs} dogPark={dogPark} />
 			<div>
 				<input
 					type="text"
