@@ -93,10 +93,19 @@ const Home = () => {
 	const numDogs = data.dogs.length;
 
 	return (
-		<div className="bg-gray-200">
+		<div className="bg-gray-200 h-screen">
 			<Header numDogs={numDogs} />
 			<DogList dogs={allDogs} />
-			<Link to="/add-dog">Doggo Check In</Link>
+			<div className="container px-4 mx-auto pb-4">
+				<Link
+					to="/add-dog"
+					className="bg-primary block flex h-10 items-center justify-center rounded-md primary-btn"
+				>
+					<h2 className="uppercase text-dark font-black">
+						Doggo Check In
+					</h2>
+				</Link>
+			</div>
 		</div>
 	);
 };

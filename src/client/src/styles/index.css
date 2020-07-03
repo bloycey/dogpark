@@ -43,3 +43,32 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.primary-btn {
+	height: 66px;
+	border: 3px solid #191919;
+	box-shadow: 0px 3px 0px #191919;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+	border: 3px solid #191919;
+	width: calc(100vw - 32px);
+}
+
+.rounded-tops {
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
+}
+
+.w-48p {
+	width: 48%;
+}
