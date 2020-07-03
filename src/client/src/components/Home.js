@@ -98,7 +98,7 @@ const Home = () => {
 			<DogList dogs={allDogs} />
 			<div className="container px-4 mx-auto pb-4">
 				<Link
-					to="/add-dog"
+					to={`/add-dog/${numDogs}`}
 					className="bg-primary block flex h-10 items-center justify-center rounded-md primary-btn"
 				>
 					<h2 className="uppercase text-dark font-black">

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "react-apollo";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import Header from "./Header";
 import { ALL_DOGS } from "./Home";
 import { dogBreeds } from "../data/dogBreeds";
 
@@ -27,7 +28,9 @@ const AddDog = () => {
 			});
 		},
 	});
+
 	const history = useHistory();
+	const { numDogs } = useParams();
 
 	const addNewDog = async () =>
 		addDog({ variables: { name, breed } })
@@ -37,28 +40,35 @@ const AddDog = () => {
 			.catch((err) => console.log(err));
 
 	return (
-		<div>
-			<input
-				type="text"
-				onChange={(e) => setName(e.target.value)}
-				placeholder="Dog Name"
-				defaultValue={name}
-			/>
-			<select
-				onChange={(e) => setBreed(e.target.value)}
-				defaultValue={breed}
-			>
-				<option disabled value="dog">
-					Select a breed
-				</option>
-				{dogBreeds.sort().map((breed) => (
-					<option value={breed} className="capitalize" key={breed}>
-						{breed}
+		<>
+			<Header numDogs={numDogs} />
+			<div>
+				<input
+					type="text"
+					onChange={(e) => setName(e.target.value)}
+					placeholder="Dog Name"
+					defaultValue={name}
+				/>
+				<select
+					onChange={(e) => setBreed(e.target.value)}
+					defaultValue={breed}
+				>
+					<option disabled value="dog">
+						Select a breed
 					</option>
-				))}
-			</select>
-			<button onClick={addNewDog}>Add Dog</button>
-		</div>
+					{dogBreeds.sort().map((breed) => (
+						<option
+							value={breed}
+							className="capitalize"
+							key={breed}
+						>
+							{breed}
+						</option>
+					))}
+				</select>
+				<button onClick={addNewDog}>Add Dog</button>
+			</div>
+		</>
 	);
 };
 
