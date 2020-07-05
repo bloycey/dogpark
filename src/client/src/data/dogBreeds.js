@@ -31,6 +31,7 @@ export const dogBreeds = [
 	"dalmatian",
 	"great dane",
 	"scottish deerhound",
+	"dog",
 	"dhole",
 	"dingo",
 	"doberman",

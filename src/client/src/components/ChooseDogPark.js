@@ -24,7 +24,7 @@ const ChooseDogPark = () => {
 				<option value="" selected disabled>
 					Please Select a Dog Park
 				</option>
-				{dogParks.map((dogPark) => {
+				{dogParks.sort().map((dogPark) => {
 					return (
 						<option value={dogPark} key={dogPark}>
 							{dogPark}

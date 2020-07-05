@@ -9,14 +9,14 @@ const App = () => {
 	return (
 		<Router>
 			<Switch>
-				<Route path="/choose-dog-park">
-					<ChooseDogPark />
-				</Route>
 				<Route path="/add-dog/:dogPark/:numDogs">
 					<AddDog />
 				</Route>
 				<Route path="/:dogPark">
 					<Home />
+				</Route>
+				<Route path="/">
+					<ChooseDogPark />
 				</Route>
 			</Switch>
 		</Router>

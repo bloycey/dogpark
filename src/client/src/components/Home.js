@@ -105,7 +105,7 @@ const Home = () => {
 			<div className="container px-4 mx-auto pb-4 mt-4">
 				<Link
 					to={`/add-dog/${dogPark}/${numDogs}`}
-					className="bg-primary flex h-10 items-center justify-center rounded-md primary-btn"
+					className="bg-primary flex h-12 items-center justify-center rounded-md primary-btn"
 				>
 					<h2 className="uppercase text-dark font-black">
 						Doggo Check In
