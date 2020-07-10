@@ -4,7 +4,7 @@ import BORK from "../assets/bork2.png";
 const Header = ({ numDogs, dogPark }) => {
 	const numberOfDogs = parseInt(numDogs);
 	return (
-		<div className="bg-dark">
+		<div className="bg-dark main-header">
 			<div className="container px-4 py-6 mx-auto text-white relative">
 				<p className="leading-none">
 					There <span>{numberOfDogs === 1 ? "is " : "are "}</span>{" "}

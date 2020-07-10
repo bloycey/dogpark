@@ -6,7 +6,11 @@ import CURVE from "../assets/curve.svg";
 const DogList = ({ dogs, dogPark }) => {
 	return (
 		<div className="relative">
-			<img src={CURVE} alt="smooth curve" className="absolute" />
+			<img
+				src={CURVE}
+				alt="smooth curve"
+				className="absolute lg:hidden"
+			/>
 			<div className="container px-4 mx-auto py-6 relative">
 				<h2 className="fancy-underline inline-block z-10 relative text-lg mb-6 mt-2">
 					Meet the dogs:

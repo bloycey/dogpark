@@ -1,11 +1,11 @@
-import express from "express";
-import mongoose from "mongoose";
-import http from "http";
-import { ApolloServer } from "apollo-server-express";
+const express = require("express");
+const mongoose = require("mongoose");
+const http = require("http");
+const { ApolloServer } = require("apollo-server-express");
 
-import typeDefs from "./typeDefs";
-import resolvers from "./resolvers";
-import { db } from "./credentials";
+const { typeDefs } = require("./typeDefs");
+const { resolvers } = require("./resolvers");
+const { db } = require("./credentials");
 
 const startServer = async () => {
 	const app = express();

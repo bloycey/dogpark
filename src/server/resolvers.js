@@ -1,6 +1,6 @@
-import { Dog } from "./models/Dog";
-import { PubSub } from "apollo-server-express";
-import { uuid } from "uuidv4";
+const { Dog } = require("./models/Dog");
+const { PubSub } = require("apollo-server-express");
+const { uuid } = require("uuidv4");
 
 const pubsub = new PubSub();
 pubsub.ee.setMaxListeners(30);
@@ -37,4 +37,4 @@ const resolvers = {
 	},
 };
 
-export default resolvers;
+module.exports.resolvers = resolvers;

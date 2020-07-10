@@ -99,7 +99,7 @@ const Home = () => {
 	const numDogs = data.dogs.length;
 
 	return (
-		<div className="bg-gray-200 h-screen">
+		<div className="bg-neutralgray h-screen">
 			<Header numDogs={numDogs} dogPark={formattedDogPark} />
 			{!!numDogs && <DogList dogs={allDogs} dogPark={formattedDogPark} />}
 			<div className="container px-4 mx-auto pb-4 mt-4">
@@ -110,6 +110,9 @@ const Home = () => {
 					<h2 className="uppercase text-dark font-black">
 						Doggo Check In
 					</h2>
+				</Link>
+				<Link to="/">
+					<p className="underline mt-2">Or choose another dog park</p>
 				</Link>
 			</div>
 		</div>

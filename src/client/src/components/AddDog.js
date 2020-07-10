@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import Header from "./Header";
 import { createDogsQuery } from "./Home";
 import { dogBreeds } from "../data/dogBreeds";
+import DOGGO from "../assets/doggo.png";
 import CURVE from "../assets/curve.svg";
 
 const ADD_DOG = gql`
@@ -57,14 +58,19 @@ const AddDog = () => {
 	};
 
 	return (
-		<div className="bg-gray-200 h-screen">
+		<div className="bg-neutralgray h-screen">
 			<Header numDogs={numDogs} dogPark={formattedDogPark} />
 			<div className="relative">
-				<img src={CURVE} alt="smooth curve" className="absolute" />
+				<img
+					src={CURVE}
+					alt="smooth curve"
+					className="absolute lg:hidden"
+				/>
 				<div className="container px-4 mx-auto py-6 relative">
 					<h2 className="fancy-underline inline-block z-10 relative text-lg mb-6 mt-2">
 						Doggo Check-in:
 					</h2>
+					<img src={DOGGO} alt="Dog Cartoon" className="doggo" />
 					<div className="mb-4">
 						<label
 							className="uppercase text-dark text-xs font-extrabold"
@@ -77,7 +83,7 @@ const AddDog = () => {
 							id="dogName"
 							onChange={(e) => setName(e.target.value)}
 							placeholder="E.g. Weasley"
-							className="h-12 rounded-md px-4 w-full border-dark"
+							className="h-12 rounded-md px-4 w-full border-dark bg-white"
 						/>
 					</div>
 					<div className="mb-6">
@@ -89,7 +95,7 @@ const AddDog = () => {
 						</label>
 						<select
 							onChange={(e) => setBreed(e.target.value)}
-							defaultValue={breed}
+							defaultValue="dog"
 							className="block w-full h-12 border-dark rounded-md px-4 custom-select"
 						>
 							<option disabled value="dog">
@@ -113,6 +119,12 @@ const AddDog = () => {
 						<h2 className="uppercase text-dark font-black">
 							Add Dog
 						</h2>
+					</button>
+					<button
+						className="underline mt-2"
+						onClick={() => history.goBack()}
+					>
+						Go Back
 					</button>
 				</div>
 			</div>

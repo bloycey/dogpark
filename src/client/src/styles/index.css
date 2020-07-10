@@ -10,9 +10,17 @@ body {
 
 .bork {
 	position: absolute;
+	width: 80px;
+}
+
+.main-header .bork {
 	bottom: 8px;
 	left: 24px;
-	width: 80px;
+}
+
+.choose-dog-park .bork {
+	right: 16px;
+	bottom: 8px;
 }
 
 .fancy-underline::after {
@@ -61,6 +69,7 @@ body {
 .modal {
 	border: 3px solid #191919;
 	width: calc(100vw - 32px);
+	max-width: 500px;
 }
 
 .rounded-tops {
@@ -84,4 +93,22 @@ body {
 	background-repeat: no-repeat;
 	background-position-x: 97%;
 	background-position-y: 50%;
+}
+
+@screen md {
+	.container {
+		max-width: 768px;
+	}
+}
+
+@screen lg {
+	.container {
+		max-width: 768px;
+	}
+}
+
+@screen xl {
+	.container {
+		max-width: 768px;
+	}
 }
