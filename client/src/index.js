@@ -20,7 +20,7 @@ const httpLink = createHttpLink({
 
 const wsLink = new WebSocketLink({
 	// JANKY ALERT: Hard coded value. Should fix this
-	uri: `ws://dogpark-app.herokuapp.com/graphql`,
+	uri: `wss://dogpark-app.herokuapp.com/graphql`,
 	options: {
 		reconnect: true,
 	},
