@@ -45,6 +45,5 @@
 	},
 	"devDependencies": {
 		"watch": "^1.0.2"
-	},
-	"proxy": "http://localhost:4001"
+	}
 }
