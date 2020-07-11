@@ -7,7 +7,8 @@ const { ApolloServer } = require("apollo-server-express");
 
 const { typeDefs } = require("./typeDefs");
 const { resolvers } = require("./resolvers");
-const { db } = require("./credentials");
+require("dotenv").config();
+// const { db } = require("./credentials");
 
 const startServer = async () => {
 	const app = express();
@@ -27,7 +28,7 @@ const startServer = async () => {
 	server.installSubscriptionHandlers(httpServer);
 
 	await mongoose
-		.connect(db, {
+		.connect(process.env.DB, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 		})
