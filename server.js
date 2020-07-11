@@ -36,7 +36,7 @@ const startServer = async () => {
 		})
 		.catch((err) => console.log("mongo error", err));
 
-	httpServer.listen({ port: 4001 }, () => {
+	httpServer.listen({ port: process.env.PORT || 4001 }, () => {
 		console.log(
 			`🚀 Server ready at http://localhost:4001${server.graphqlPath}`
 		);
