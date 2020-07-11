@@ -10,7 +10,7 @@ body {
 
 .bork {
 	position: absolute;
-	width: 80px;
+	width: 60px;
 }
 
 .main-header .bork {
@@ -20,7 +20,7 @@ body {
 
 .choose-dog-park .bork {
 	right: 16px;
-	bottom: 8px;
+	bottom: 0;
 }
 
 .fancy-underline::after {

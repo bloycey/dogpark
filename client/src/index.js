@@ -14,12 +14,13 @@ import { getMainDefinition } from "apollo-utilities";
 
 import "./styles.css";
 
+// JANKY ALERT: Hard coded urls. Should fix this
+
 const httpLink = createHttpLink({
-	uri: `/graphql`,
+	uri: `https://dogpark-app.herokuapp.com/graphql`,
 });
 
 const wsLink = new WebSocketLink({
-	// JANKY ALERT: Hard coded value. Should fix this
 	uri: `wss://dogpark-app.herokuapp.com/graphql`,
 	options: {
 		reconnect: true,

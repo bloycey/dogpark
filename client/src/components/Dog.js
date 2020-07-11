@@ -36,10 +36,10 @@ const Dog = ({ id, name, breed, dogPark }) => {
 		<>
 			<div className="flex justify-between items-center py-2">
 				<div>
-					<h3 className="leading-none font-extrabold text-2xl text-dark">
+					<h3 className="leading-none font-extrabold text-xl text-dark">
 						{name}
 					</h3>
-					<h5 className="text-gray-700 text-lg -mt-1">
+					<h5 className="text-gray-700 -mt-1">
 						the <span className="capitalize">{breed}</span>
 					</h5>
 				</div>

@@ -10,8 +10,8 @@ const Header = ({ numDogs, dogPark }) => {
 					There <span>{numberOfDogs === 1 ? "is " : "are "}</span>{" "}
 					currently
 				</p>
-				<p className="font-black uppercase text-6xl leading-none">
-					{numberOfDogs} dog{numberOfDogs === 1 ? "" : "s"}
+				<p className="font-black uppercase text-5xl leading-none">
+					1{numberOfDogs} dog{numberOfDogs === 1 ? "" : "s"}
 				</p>
 				<p className="text-right leading-none ">at {dogPark}</p>
 				<img src={BORK} alt="BORK sound" className="bork" />

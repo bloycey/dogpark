@@ -713,12 +713,12 @@ video {
   font-size: 1.125rem;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
+.text-xl {
+  font-size: 1.25rem;
 }
 
-.text-6xl {
-  font-size: 4rem;
+.text-5xl {
+  font-size: 3rem;
 }
 
 .leading-none {
@@ -869,7 +869,7 @@ body {
 
 .bork {
   position: absolute;
-  width: 80px;
+  width: 60px;
 }
 
 .main-header .bork {
@@ -879,7 +879,7 @@ body {
 
 .choose-dog-park .bork {
   right: 16px;
-  bottom: 8px;
+  bottom: 0;
 }
 
 .fancy-underline::after {

@@ -17,7 +17,7 @@ const ChooseDogPark = () => {
 		<div>
 			<div className="bg-dark choose-dog-park">
 				<div className="container px-4 py-8 mx-auto text-white relative">
-					<p className="leading-none font-extrabold text-2xl lg:text-4xl">
+					<p className="leading-none font-extrabold text-lg lg:text-4xl">
 						Who's at the dog park?
 					</p>
 					<p className="opacity-50 leading-tight lg:text-xl">
@@ -27,8 +27,8 @@ const ChooseDogPark = () => {
 				</div>
 			</div>
 			<div className="container px-4 mx-auto">
-				<h2 className="fancy-underline inline-block z-10 relative text-lg mb-6 mt-6">
-					Start by selecting your dog park:
+				<h2 className="fancy-underline inline-block z-10 relative mb-6 mt-6">
+					Select your dog park:
 				</h2>
 				<select
 					name="dogParks"
@@ -49,13 +49,13 @@ const ChooseDogPark = () => {
 						);
 					})}
 				</select>
-				<h2 className="fancy-underline inline-block z-10 relative text-lg mb-6 mt-6">
+				<h2 className="fancy-underline inline-block z-10 relative mb-6 mt-6">
 					Use this app to:
 				</h2>
-				<ul className="list-disc list-inside">
-					<li>Check your dog into the dog park;</li>
-					<li>View dogs currently at the dog park;</li>
-					<li>Determine how busy a dog park is.</li>
+				<ul className="list-disc list-inside text-sm">
+					<li>Check your dog in;</li>
+					<li>View dogs at the dog park;</li>
+					<li>See how busy a dog park is.</li>
 				</ul>
 			</div>
 		</div>

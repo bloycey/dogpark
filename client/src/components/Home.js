@@ -102,7 +102,7 @@ const Home = () => {
 		<div className="bg-neutralgray h-screen">
 			<Header numDogs={numDogs} dogPark={formattedDogPark} />
 			{!!numDogs && <DogList dogs={allDogs} dogPark={formattedDogPark} />}
-			<div className="container px-4 mx-auto pb-4 mt-4">
+			<div className="container px-4 mx-auto pb-4 mt-4 bg-neutralgray">
 				<Link
 					to={`/add-dog/${dogPark}/${numDogs}`}
 					className="bg-primary flex h-12 items-center justify-center rounded-md primary-btn"
