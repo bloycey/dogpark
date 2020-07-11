@@ -4,8 +4,7 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "node index.js",
-		"heroku-postbuild": "cd client && yarn && yarn --only=dev --no-shrinkwrap && yarn build"
+		"start": "node index.js"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.4"

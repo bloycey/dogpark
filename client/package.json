@@ -24,7 +24,7 @@
 		"start": "react-scripts start",
 		"css": "npx tailwindcss build ./src/styles/index.css -o ./src/styles.css",
 		"watch:css": "watch 'yarn run css' ./src/styles",
-		"build": "react-scripts build",
+		"build": "react-scripts build && mv build ../public",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
