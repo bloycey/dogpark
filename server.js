@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const http = require("http");
 const path = require("path");
+const cors = require("cors");
 const { ApolloServer } = require("apollo-server-express");
 
 const { typeDefs } = require("./typeDefs");
@@ -11,15 +12,13 @@ const { db } = require("./credentials");
 const startServer = async () => {
 	const app = express();
 
-	if (process.env.NODE_ENV === "production") {
-		// Serve any static files
-		app.use(express.static("public"));
+	app.use(cors());
+	app.use(express.static("public"));
 
-		// Handle React routing, return all requests to React app
-		app.get("*", (req, res) => {
-			res.sendFile(path.resolve(__dirname, "public", "index.html"));
-		});
-	}
+	// Handle React routing, return all requests to React app
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "public", "index.html"));
+	});
 
 	const server = new ApolloServer({ typeDefs, resolvers });
 
