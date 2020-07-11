@@ -61,7 +61,9 @@ const Dog = ({ id, name, breed, dogPark }) => {
 							Just to confirm...
 						</div>
 						<div className="px-2 flex justify-between items-center">
-							<p>Is {name} leaving the dog park?</p>
+							<p className="text-sm">
+								Is {name} leaving the dog park?
+							</p>
 							<img
 								src={DOGHOUSE}
 								alt="Cartoon dog in doghouse"
