@@ -11,7 +11,7 @@ const Header = ({ numDogs, dogPark }) => {
 					currently
 				</p>
 				<p className="font-black uppercase text-5xl leading-none">
-					1{numberOfDogs} dog{numberOfDogs === 1 ? "" : "s"}
+					{numberOfDogs} dog{numberOfDogs === 1 ? "" : "s"}
 				</p>
 				<p className="text-right leading-none ">at {dogPark}</p>
 				<img src={BORK} alt="BORK sound" className="bork" />

@@ -39,7 +39,7 @@ const Dog = ({ id, name, breed, dogPark }) => {
 					<h3 className="leading-none font-extrabold text-xl text-dark">
 						{name}
 					</h3>
-					<h5 className="text-gray-700 -mt-1">
+					<h5 className="text-gray-700 -mt-1 leading-tight text-sm">
 						the <span className="capitalize">{breed}</span>
 					</h5>
 				</div>

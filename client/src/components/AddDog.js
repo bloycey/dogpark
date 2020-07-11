@@ -66,7 +66,7 @@ const AddDog = () => {
 					alt="smooth curve"
 					className="absolute lg:hidden"
 				/>
-				<div className="container px-4 mx-auto py-6 relative">
+				<div className="container px-4 mx-auto py-6 relative bg-neutralgray">
 					<h2 className="fancy-underline inline-block z-10 relative text-lg mb-6 mt-2">
 						Doggo Check-in:
 					</h2>
