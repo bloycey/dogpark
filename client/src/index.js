@@ -15,11 +15,12 @@ import { getMainDefinition } from "apollo-utilities";
 import "./styles.css";
 
 const httpLink = createHttpLink({
-	uri: `${process.env.REACT_APP_APP_URL}/graphql`,
+	uri: `/graphql`,
 });
 
 const wsLink = new WebSocketLink({
-	uri: `${process.env.REACT_APP_WEBSOCKETS_URL}/graphql`,
+	// JANKY ALERT: Hard coded value. Should fix this
+	uri: `ws://dogpark-app.herokuapp.com/graphql`,
 	options: {
 		reconnect: true,
 	},
