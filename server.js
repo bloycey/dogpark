@@ -11,6 +11,8 @@ require("dotenv").config();
 // const { db } = require("./credentials");
 
 const startServer = async () => {
+	const db = process.env.DB;
+
 	const app = express();
 
 	app.use(cors());
@@ -28,7 +30,7 @@ const startServer = async () => {
 	server.installSubscriptionHandlers(httpServer);
 
 	await mongoose
-		.connect(process.env.DB, {
+		.connect(db, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 		})
